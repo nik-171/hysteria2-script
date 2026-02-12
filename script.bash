@@ -21,9 +21,9 @@ systemctl restart sshd
 ufw allow $NEW_PORT/tcp && ufw allow 443/tcp && ufw enable
 
 
-sed -i '/# ok icmp codes for input/,/^$/ s/ACCEPT/DROP/' /etc/ufw/before.rules
-sed -i '/# ok icmp codes for forward/,/^$/ s/ACCEPT/DROP/' /etc/ufw/before.rules
-sed -i '/# ok icmp codes for input/a -A ufw-before-input -p icmp --icmp-type source-quench -j DROP' /etc/ufw/before.rules
+sed -i '/# ok icmp codes for INPUT/,/^$/ s/ACCEPT/DROP/' /etc/ufw/before.rules
+sed -i '/# ok icmp codes for FORVARD/,/^$/ s/ACCEPT/DROP/' /etc/ufw/before.rules
+sed -i '/# ok icmp codes for INPUT/a -A ufw-before-input -p icmp --icmp-type source-quench -j DROP' /etc/ufw/before.rules
 
 
 ufw disable && ufw enable
