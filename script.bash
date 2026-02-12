@@ -1,5 +1,5 @@
 apt update -y
-apt install -y ufw curl
+apt install -y ufw curl openssh-server
 
 
 read -p "enter a new port for SSH: " NEW_PORT
@@ -11,7 +11,6 @@ fi
 
 sed -i "s/^#Port .*/Port $NEW_PORT/" /etc/ssh/ssh_config
 sed -i "s/^Port .*/Port $NEW_PORT/" /etc/ssh/ssh_config
-systemctl restart ssh
 
 echo "port changed: $NEW_PORT"
 
@@ -22,7 +21,7 @@ ufw allow $NEW_PORT/tcp && ufw allow 443/tcp && ufw enable
 
 
 sed -i '/# ok icmp codes for INPUT/,/^$/ s/ACCEPT/DROP/' /etc/ufw/before.rules
-sed -i '/# ok icmp codes for FORVARD/,/^$/ s/ACCEPT/DROP/' /etc/ufw/before.rules
+sed -i '/# ok icmp code for FORVARD/,/^$/ s/ACCEPT/DROP/' /etc/ufw/before.rules
 sed -i '/# ok icmp codes for INPUT/a -A ufw-before-input -p icmp --icmp-type source-quench -j DROP' /etc/ufw/before.rules
 
 
