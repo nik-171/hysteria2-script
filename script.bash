@@ -1,5 +1,5 @@
 apt update -y
-apt install -y ufw
+apt install -y ufw curl
 
 
 read -p "enter a new port for SSH: " NEW_PORT
