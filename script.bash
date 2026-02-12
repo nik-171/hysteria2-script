@@ -29,6 +29,6 @@ sed -i '/# ok icmp codes for input/a -A ufw-before-input -p icmp --icmp-type sou
 ufw disable && ufw enable
 
 bash <(curl -sL https://bit.ly/realityez) 
-bash <(curl -sL https://bit.ly/realityez) -t hysteria2
 bash <(curl -sL https://bit.ly/realityez) --security selfsigned
+bash <(curl -sL https://bit.ly/realityez) -t hysteria2
 bash <(curl -sL https://bit.ly/realityez) --show-user RealityEZPZ
