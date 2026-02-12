@@ -9,14 +9,14 @@ if ! [[ "$NEW_PORT" =~ ^[0-9]+$ ]] || [ "$NEW_PORT" -lt 1 ] || [ "$NEW_PORT" -gt
     exit 1
 fi
 
-sed -i "s/^#Port .*/Port $NEW_PORT/" /etc/ssh/sshd_config
-sed -i "s/^Port .*/Port $NEW_PORT/" /etc/ssh/sshd_config
-systemctl restart sshd
+sed -i "s/^#Port .*/Port $NEW_PORT/" /etc/ssh/ssh_config
+sed -i "s/^Port .*/Port $NEW_PORT/" /etc/ssh/ssh_config
+systemctl restart ssh
 
 echo "port changed: $NEW_PORT"
 
 systemctl daemon-reload
-systemctl restart sshd
+systemctl restart ssh
 
 ufw allow $NEW_PORT/tcp && ufw allow 443/tcp && ufw enable
 
