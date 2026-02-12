@@ -9,8 +9,8 @@ if ! [[ "$NEW_PORT" =~ ^[0-9]+$ ]] || [ "$NEW_PORT" -lt 1 ] || [ "$NEW_PORT" -gt
     exit 1
 fi
 
-sed -i "s/^#Port .*/Port $NEW_PORT/" /etc/ssh/ssh_config
-sed -i "s/^Port .*/Port $NEW_PORT/" /etc/ssh/ssh_config
+sed -i "s/^#Port .*/Port $NEW_PORT/" /etc/ssh/sshd_config
+sed -i "s/^Port .*/Port $NEW_PORT/" /etc/ssh/sshd_config
 
 echo "port changed: $NEW_PORT"
 
@@ -31,3 +31,6 @@ bash <(curl -sL https://bit.ly/realityez)
 bash <(curl -sL https://bit.ly/realityez) --security selfsigned
 bash <(curl -sL https://bit.ly/realityez) -t hysteria2
 bash <(curl -sL https://bit.ly/realityez) --show-user RealityEZPZ
+
+echo "ssh port: $NEW_PORT"
+ufw status numbered
