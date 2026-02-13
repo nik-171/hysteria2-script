@@ -1,6 +1,6 @@
 # hysteria2-script
 
-# only for debian
+# tested only for debian
 
 This script uses https://github.com/aleskxyz/reality-ezpz
 
